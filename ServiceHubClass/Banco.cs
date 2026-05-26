@@ -11,7 +11,7 @@ namespace servicehub
     public static class Banco
 
     {
-        class
+        
         //string de conexão com o banco de dados (MAriaDB)
         public static string? StrConn { get; set; }
 
