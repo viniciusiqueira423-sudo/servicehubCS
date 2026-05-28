@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceHubClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -104,6 +105,7 @@ namespace servicehub
 
         private void Frmcomponente_Load(object sender, EventArgs e)
         {
+
             var cmd = Banco.Abrir();
             cmd.CommandText = "select * from servicos";
             var dr = cmd.ExecuteReader();

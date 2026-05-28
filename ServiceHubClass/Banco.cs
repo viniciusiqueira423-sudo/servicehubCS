@@ -24,7 +24,7 @@ namespace servicehub
             StrConn = strconn;
             if(StrConn == string.Empty)
                 //StrConn = $@"server=10.91.47.48;database=servicehubdb01;user=root;password=P@ssw0rd";
-                StrConn = $@"server=10.91.47.48;database=comercialdb01;user=root;password=P@ssw0rd";
+                StrConn = $@"server=10.91.47.44;database=comercialti101;user=root;password=P@ssw0rd";
 
             MySqlConnection cn = new(StrConn);
             try
