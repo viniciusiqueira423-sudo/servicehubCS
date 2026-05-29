@@ -54,11 +54,14 @@
             DGVcategorias.AllowUserToDeleteRows = false;
             DGVcategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGVcategorias.Columns.AddRange(new DataGridViewColumn[] { ClnID, CLNnome, CLNsigla });
-            DGVcategorias.Location = new Point(74, 289);
+            DGVcategorias.Location = new Point(74, 298);
             DGVcategorias.Name = "DGVcategorias";
             DGVcategorias.ReadOnly = true;
+            DGVcategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGVcategorias.Size = new Size(615, 211);
             DGVcategorias.TabIndex = 0;
+            DGVcategorias.CellClick += DGVcategorias_CellClick;
+            DGVcategorias.SelectionChanged += DGVcategorias_SelectionChanged;
             // 
             // ClnID
             // 
@@ -123,6 +126,7 @@
             BTNexcluir.Text = "E&xcluir";
             BTNexcluir.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNexcluir.UseVisualStyleBackColor = false;
+            BTNexcluir.Click += BTNexcluir_Click;
             // 
             // BTNpesquisar
             // 
@@ -159,6 +163,7 @@
             BTNeditar.Text = "&Editar";
             BTNeditar.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNeditar.UseVisualStyleBackColor = false;
+            BTNeditar.Click += BTNeditar_Click;
             // 
             // BTNadicionar
             // 

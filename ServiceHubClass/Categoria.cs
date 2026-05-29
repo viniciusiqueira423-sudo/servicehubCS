@@ -33,6 +33,10 @@ namespace ServiceHubClass
             Nome = nome;
             Sigla = sigla;
         }
+        public Categoria(int id)
+        {
+            Id = id;
+        }
 
         // Métodos (Funcionalidades RFs)  - inserir, atualizar, obterLista, obterPorId(id), excluir(id)
         public void Inserir()
@@ -73,7 +77,8 @@ namespace ServiceHubClass
             {
                 if (busca != "")
                 {
-                    cmd.CommandText = $"select * from categorias where nome like '%"+busca+"%' order by nome";
+                    cmd.CommandText = $"select * from categorias where nome like" +
+                        $" '%"+busca+"%'order by nome";
                 }
                 else
                 {
@@ -109,12 +114,12 @@ namespace ServiceHubClass
             return atualizada;
         }
 
-        public void Excluir(int id)
+        public void Excluir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_categoria_delete";
-            cmd.Parameters.AddWithValue("spid", id);
+            cmd.Parameters.AddWithValue("spid", Id);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
