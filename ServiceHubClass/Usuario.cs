@@ -78,7 +78,7 @@ namespace ServiceHubClass
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"select * from usuarios where id = {id}";
             var dr = cmd.ExecuteReader();
-            while (dr.Read())
+            if (dr.Read())
             {
                 usuario = new(
                     dr.GetInt32(0),
