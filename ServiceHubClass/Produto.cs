@@ -144,7 +144,7 @@ namespace ServiceHubClass
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"select * from produtos where id = {id}";
             var dr = cmd.ExecuteReader();
-            if (dr.Read())
+            while (dr.Read())
             {
                 produto = new(
                     dr.GetInt32(0),
@@ -155,7 +155,7 @@ namespace ServiceHubClass
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte[])dr.GetValue(8),
+                    null,
                     dr.GetDateTime(9),
                     dr.GetBoolean(10)
                     );
@@ -172,7 +172,7 @@ namespace ServiceHubClass
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"select * from produtos order by descricao";
             var dr = cmd.ExecuteReader();
-            if (dr.Read())
+            while (dr.Read())
             {
                 produtos.Add(new(
                     dr.GetInt32(0),
@@ -183,7 +183,7 @@ namespace ServiceHubClass
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte[])dr.GetValue(8),
+                    null,
                     dr.GetDateTime(9),
                     dr.GetBoolean(10)
                     ));

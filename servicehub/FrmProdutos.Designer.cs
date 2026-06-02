@@ -133,7 +133,6 @@
             label1.Size = new Size(61, 15);
             label1.TabIndex = 14;
             label1.Text = "CodBarras";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -143,7 +142,6 @@
             label2.Size = new Size(58, 15);
             label2.TabIndex = 15;
             label2.Text = "Descrição";
-            label2.Click += label2_Click;
             // 
             // label3
             // 
@@ -171,7 +169,6 @@
             label5.Size = new Size(58, 15);
             label5.TabIndex = 18;
             label5.Text = "Categoria";
-            label5.Click += label5_Click;
             // 
             // label6
             // 
@@ -190,7 +187,6 @@
             label7.Size = new Size(94, 15);
             label7.TabIndex = 20;
             label7.Text = "Estoque minimo";
-            label7.Click += label7_Click;
             // 
             // PICimagem
             // 
@@ -256,7 +252,6 @@
             BTNpesquisar.Text = "&Buscar";
             BTNpesquisar.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNpesquisar.UseVisualStyleBackColor = false;
-            BTNpesquisar.Click += BTNpesquisar_Click;
             // 
             // button2
             // 
@@ -294,13 +289,14 @@
             BTNsalvar.Text = "&Salvar";
             BTNsalvar.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNsalvar.UseVisualStyleBackColor = false;
+            BTNsalvar.Click += BTNsalvar_Click;
             // 
             // DGVprodutos
             // 
             DGVprodutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVprodutos.Location = new Point(41, 296);
+            DGVprodutos.Location = new Point(41, 393);
             DGVprodutos.Name = "DGVprodutos";
-            DGVprodutos.Size = new Size(689, 296);
+            DGVprodutos.Size = new Size(1126, 199);
             DGVprodutos.TabIndex = 31;
             // 
             // FrmProdutos
@@ -333,6 +329,7 @@
             Controls.Add(TXTcodBarras);
             Name = "FrmProdutos";
             Text = "Cadastro de Produtos";
+            Load += FrmProdutos_Load;
             ((System.ComponentModel.ISupportInitialize)NudValorUnit).EndInit();
             ((System.ComponentModel.ISupportInitialize)NUDestoquemin).EndInit();
             ((System.ComponentModel.ISupportInitialize)NUDclassedesc).EndInit();
