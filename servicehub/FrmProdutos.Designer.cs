@@ -51,10 +51,12 @@
             BTNpesquisar = new Button();
             button2 = new Button();
             BTNsalvar = new Button();
+            DGVprodutos = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)NudValorUnit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUDestoquemin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NUDclassedesc).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PICimagem).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DGVprodutos).BeginInit();
             SuspendLayout();
             // 
             // TXTcodBarras
@@ -116,7 +118,7 @@
             // 
             // BTNcarregarimg
             // 
-            BTNcarregarimg.Location = new Point(622, 175);
+            BTNcarregarimg.Location = new Point(611, 175);
             BTNcarregarimg.Name = "BTNcarregarimg";
             BTNcarregarimg.Size = new Size(166, 32);
             BTNcarregarimg.TabIndex = 13;
@@ -293,11 +295,20 @@
             BTNsalvar.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNsalvar.UseVisualStyleBackColor = false;
             // 
+            // DGVprodutos
+            // 
+            DGVprodutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVprodutos.Location = new Point(41, 296);
+            DGVprodutos.Name = "DGVprodutos";
+            DGVprodutos.Size = new Size(689, 296);
+            DGVprodutos.TabIndex = 31;
+            // 
             // FrmProdutos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1225, 450);
+            ClientSize = new Size(1225, 690);
+            Controls.Add(DGVprodutos);
             Controls.Add(BTNcancelar);
             Controls.Add(BTNpesquisar);
             Controls.Add(button2);
@@ -326,6 +337,7 @@
             ((System.ComponentModel.ISupportInitialize)NUDestoquemin).EndInit();
             ((System.ComponentModel.ISupportInitialize)NUDclassedesc).EndInit();
             ((System.ComponentModel.ISupportInitialize)PICimagem).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DGVprodutos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -354,5 +366,6 @@
         private Button button2;
         private Button BTNsalvar;
         private Button BTNcancelar;
+        private DataGridView DGVprodutos;
     }
 }
