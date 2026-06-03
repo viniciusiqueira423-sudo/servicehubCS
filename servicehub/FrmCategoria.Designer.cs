@@ -61,6 +61,7 @@
             DGVcategorias.Size = new Size(615, 211);
             DGVcategorias.TabIndex = 0;
             DGVcategorias.CellClick += DGVcategorias_CellClick;
+            DGVcategorias.CellContentClick += DGVcategorias_CellContentClick;
             DGVcategorias.SelectionChanged += DGVcategorias_SelectionChanged;
             // 
             // ClnID
@@ -145,6 +146,7 @@
             BTNpesquisar.Text = "&Pesquisar";
             BTNpesquisar.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNpesquisar.UseVisualStyleBackColor = false;
+            BTNpesquisar.Click += BTNpesquisar_Click;
             // 
             // BTNeditar
             // 

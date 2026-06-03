@@ -1,98 +1,126 @@
-﻿using Org.BouncyCastle.Tls;
-using servicehub;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-using Google.Protobuf.WellKnownTypes;
+using servicehub;
 
 namespace ServiceHubClass
 {
-    internal class Nivel
+    public class Nivel
     {
-        // Atributos
         public int Id { get; set; }
-        public string? Nome { get; set; }
-        public string? Sigla { get; set; }
-        //construtores 
+        public string Nome { get; set; }
+        public string Sigla { get; set; }
+
         public Nivel()
         {
             Id = 0;
+            Nome = "";
+            Sigla = "";
         }
-        public Nivel(string? nome, string? sigla)
+
+        public Nivel(string nome, string sigla)
         {
             Nome = nome;
             Sigla = sigla;
         }
-        public Nivel(int id, string? nome, string? sigla)
+
+        public Nivel(int id, string nome, string sigla)
         {
             Id = id;
             Nome = nome;
             Sigla = sigla;
         }
-        public Nivel(int id)
-        {
-            Id = id;
-        }
-        // Métodos 
+
         public void Inserir()
         {
             var cmd = Banco.Abrir();
-            if (cmd.Connection.State == ConnectionState.Open)
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_nivel_insert";
-                cmd.Parameters.AddWithValue("spnome", Nome);
-                cmd.Parameters.AddWithValue("spsigla", Sigla);
-                Id = Convert.ToInt32(cmd.ExecuteScalar());
-                cmd.Connection.Close();
-            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_nivel_insert";
+
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spsigla", Sigla);
+
+            Id = Convert.ToInt32(cmd.ExecuteScalar());
+
+            cmd.Connection.Close();
         }
-        public static Nivel  ObterPorId(int id)
+
+        public static Nivel ObterPorId(int id)
         {
-            Nivel nv = new();
+            Nivel nivel = new Nivel();
+
             var cmd = Banco.Abrir();
+
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from nivel where id = {id}";
+            cmd.CommandText = "SELECT * FROM niveis WHERE id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
             var dr = cmd.ExecuteReader();
+
             if (dr.Read())
             {
-                nv = new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2));
+                nivel.Id = dr.GetInt32(0);
+                nivel.Nome = dr.GetString(1);
+
+                if (!dr.IsDBNull(2))
+                    nivel.Sigla = dr.GetString(2);
             }
+
             dr.Close();
             cmd.Connection.Close();
-            return nv;
+
+            return nivel;
         }
+
         public static List<Nivel> ObterLista(string busca = "")
         {
-            List<Nivel> niv = new List<Nivel>();
+            List<Nivel> lista = new();
+
             var cmd = Banco.Abrir();
-            if (cmd.Connection.State == ConnectionState.Open)
+
+            cmd.CommandType = CommandType.Text;
+
+            if (string.IsNullOrWhiteSpace(busca))
             {
-                if (busca != "")
-                {
-                    cmd.CommandText = $"select * from niveis where nome like" +
-                        $"'%" + busca + "%' order by nome";
-                }
-                else
-                {
-                    cmd.CommandText = $"select * from niveis order by nome";
-                }
-                cmd.CommandType = CommandType.Text;
-                var dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    niv.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2) ?? ""));
-                }
-                dr.Close();
-                cmd.Connection.Close();
+                cmd.CommandText =
+                    "SELECT * FROM niveis ORDER BY nome";
             }
-            return niv;
+            else
+            {
+                cmd.CommandText =
+                    "SELECT * FROM niveis WHERE nome LIKE @busca ORDER BY nome";
+
+                cmd.Parameters.AddWithValue(
+                    "@busca",
+                    "%" + busca + "%"
+                );
+            }
+
+            var dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                Nivel nivel = new Nivel();
+
+                nivel.Id = dr.GetInt32(0);
+                nivel.Nome = dr.GetString(1);
+
+                if (!dr.IsDBNull(2))
+                    nivel.Sigla = dr.GetString(2);
+
+                lista.Add(nivel);
+            }
+
+            dr.Close();
+            cmd.Connection.Close();
+
+            return lista;
         }
 
-
+        public override string ToString()
+        {
+            return Nome;
+        }
     }
 }

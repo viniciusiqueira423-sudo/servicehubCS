@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ServiceHubClass
 {
-    internal class Usuario
+    public class Usuario
     {
         public Usuario()
         {
@@ -25,7 +25,7 @@ namespace ServiceHubClass
             Ativo = ativo;
         }
 
-        public Usuario(string? nome, string? email, Nivel? nivel, string? senha, bool ativo)
+        public Usuario(string? nome, string? email, Nivel nivel, string? senha, bool ativo)
         {
             Nome = nome;
             Email = email;
@@ -38,7 +38,7 @@ namespace ServiceHubClass
         public int Id { get; set; }
         public string? Nome { get; set; }
         public string? Email { get; set; }
-        public Nivel? nivel { get; set; }
+        public Nivel nivel { get; set; }
         public string? Senha { get; set; }
         public bool Ativo { get; set; }
 
@@ -57,18 +57,22 @@ namespace ServiceHubClass
 
         }
 
-        public void Atualizar()
+        public bool Atualizar()
         {
+            bool atualizado = false;
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_usuario_altera";
-            cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spid", Id);
-            cmd.Parameters.AddWithValue("spnivel", nivel.Id);
+            cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spsenha", Senha);
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.AddWithValue("spnivel", nivel.Id);
+            if (cmd.ExecuteNonQuery() > 0)
+            {
+                atualizado = true;
+            }
             cmd.Connection.Close();
-
+            return atualizado;
         }
 
         public static Usuario obterPorId(int id)
@@ -81,13 +85,13 @@ namespace ServiceHubClass
             if (dr.Read())
             {
                 usuario = new(
-                    dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2),
-                    Nivel.ObterPorId(dr.GetInt32(5)),
-                    dr.GetString(4),
-                    dr.GetBoolean(5)
-                    );
+                    dr.GetInt32(0),                 // id
+                    dr.GetString(1),                // nome
+                    dr.GetString(2),                // email
+                    Nivel.ObterPorId(dr.GetInt32(5)), // nivel_id
+                    dr.GetString(3),                // senha
+                    dr.GetBoolean(4)                // ativo
+                );
 
             }
             dr.Close();
@@ -95,28 +99,68 @@ namespace ServiceHubClass
             return usuario;
         }
 
-        public static List<Usuario> obterLista()
+        public static List<Usuario> ObterLista(string busca = "")
         {
             List<Usuario> usuarios = new();
+
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.Text;
+
+                if (!string.IsNullOrWhiteSpace(busca))
+                {
+                    cmd.CommandText =
+                        "SELECT * FROM usuarios WHERE nome LIKE @busca ORDER BY nome";
+
+                    cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
+                }
+                else
+                {
+                    cmd.CommandText =
+                        "SELECT * FROM usuarios ORDER BY nome";
+                }
+
+                var dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    usuarios.Add(new Usuario(
+                    dr.GetInt32(0),                 // id
+                    dr.GetString(1),                // nome
+                    dr.GetString(2),                // email
+                    Nivel.ObterPorId(dr.GetInt32(5)), // nivel_id (CORRETO)
+                    dr.GetString(3),                // senha
+                    dr.GetBoolean(4)                // ativo
+                    ));
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return usuarios;
+        }
+
+        public static bool Excluir(int id)
+        {
+            bool excluido = false;
+
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from usuarios order by nome";
-            var dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                usuarios.Add(new(
-                    dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2),
-                    Nivel.ObterPorId(dr.GetInt32(5)),
-                    dr.GetString(4),
-                    dr.GetBoolean(5)
-                    ));
 
+            cmd.CommandText = "DELETE FROM usuarios WHERE id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            if (cmd.ExecuteNonQuery() > 0)
+            {
+                excluido = true;
             }
-            dr.Close();
+
             cmd.Connection.Close();
-            return usuarios;
+
+            return excluido;
         }
     }
 }

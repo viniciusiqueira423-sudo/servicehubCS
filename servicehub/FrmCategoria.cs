@@ -109,6 +109,15 @@ namespace servicehub
             }
         }
 
+        private void DGVcategorias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void BTNpesquisar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
