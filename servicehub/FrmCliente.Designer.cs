@@ -25,11 +25,6 @@
         private CheckBox CHKativo;
 
         private DataGridView DGVclientes;
-
-        private Button BTNadicionar;
-        private Button BTNeditar;
-        private Button BTNexcluir;
-        private Button BTNcancelar;
         private Button BTNpesquisar;
 
         protected override void Dispose(bool disposing)
@@ -58,10 +53,6 @@
             DTPnascimento = new DateTimePicker();
             DTPcadastro = new DateTimePicker();
             CHKativo = new CheckBox();
-            BTNadicionar = new Button();
-            BTNeditar = new Button();
-            BTNexcluir = new Button();
-            BTNcancelar = new Button();
             BTNpesquisar = new Button();
             DGVclientes = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -72,6 +63,10 @@
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            BTNcancelar = new Button();
+            BTNexcluir = new Button();
+            BTNeditar = new Button();
+            BTNadicionar = new Button();
             ((System.ComponentModel.ISupportInitialize)DGVclientes).BeginInit();
             SuspendLayout();
             // 
@@ -169,7 +164,7 @@
             // 
             // TXTbuscar
             // 
-            TXTbuscar.Location = new Point(20, 360);
+            TXTbuscar.Location = new Point(20, 398);
             TXTbuscar.Name = "TXTbuscar";
             TXTbuscar.PlaceholderText = "Buscar Cliente";
             TXTbuscar.Size = new Size(700, 23);
@@ -199,41 +194,9 @@
             CHKativo.TabIndex = 15;
             CHKativo.Text = "Cliente Ativo";
             // 
-            // BTNadicionar
-            // 
-            BTNadicionar.Location = new Point(20, 320);
-            BTNadicionar.Name = "BTNadicionar";
-            BTNadicionar.Size = new Size(90, 35);
-            BTNadicionar.TabIndex = 16;
-            BTNadicionar.Text = "Adicionar";
-            // 
-            // BTNeditar
-            // 
-            BTNeditar.Location = new Point(120, 320);
-            BTNeditar.Name = "BTNeditar";
-            BTNeditar.Size = new Size(90, 35);
-            BTNeditar.TabIndex = 17;
-            BTNeditar.Text = "Editar";
-            // 
-            // BTNexcluir
-            // 
-            BTNexcluir.Location = new Point(220, 320);
-            BTNexcluir.Name = "BTNexcluir";
-            BTNexcluir.Size = new Size(90, 35);
-            BTNexcluir.TabIndex = 18;
-            BTNexcluir.Text = "Excluir";
-            // 
-            // BTNcancelar
-            // 
-            BTNcancelar.Location = new Point(320, 320);
-            BTNcancelar.Name = "BTNcancelar";
-            BTNcancelar.Size = new Size(90, 35);
-            BTNcancelar.TabIndex = 19;
-            BTNcancelar.Text = "Cancelar";
-            // 
             // BTNpesquisar
             // 
-            BTNpesquisar.Location = new Point(730, 360);
+            BTNpesquisar.Location = new Point(726, 396);
             BTNpesquisar.Name = "BTNpesquisar";
             BTNpesquisar.Size = new Size(100, 25);
             BTNpesquisar.TabIndex = 20;
@@ -244,7 +207,7 @@
             DGVclientes.AllowUserToAddRows = false;
             DGVclientes.AllowUserToDeleteRows = false;
             DGVclientes.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8 });
-            DGVclientes.Location = new Point(20, 400);
+            DGVclientes.Location = new Point(20, 438);
             DGVclientes.MultiSelect = false;
             DGVclientes.Name = "DGVclientes";
             DGVclientes.ReadOnly = true;
@@ -300,11 +263,87 @@
             dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
+            // BTNcancelar
+            // 
+            BTNcancelar.BackColor = SystemColors.Control;
+            BTNcancelar.FlatAppearance.BorderSize = 0;
+            BTNcancelar.FlatAppearance.MouseDownBackColor = Color.OrangeRed;
+            BTNcancelar.FlatAppearance.MouseOverBackColor = Color.Salmon;
+            BTNcancelar.FlatStyle = FlatStyle.Flat;
+            BTNcancelar.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BTNcancelar.ForeColor = Color.Red;
+            BTNcancelar.Image = Properties.Resources.Cancel;
+            BTNcancelar.Location = new Point(182, 335);
+            BTNcancelar.Name = "BTNcancelar";
+            BTNcancelar.Size = new Size(83, 57);
+            BTNcancelar.TabIndex = 25;
+            BTNcancelar.Text = "&Cancelar";
+            BTNcancelar.TextImageRelation = TextImageRelation.ImageAboveText;
+            BTNcancelar.UseVisualStyleBackColor = false;
+            // 
+            // BTNexcluir
+            // 
+            BTNexcluir.BackColor = SystemColors.Control;
+            BTNexcluir.FlatAppearance.BorderSize = 0;
+            BTNexcluir.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 128);
+            BTNexcluir.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 192, 192);
+            BTNexcluir.FlatStyle = FlatStyle.Flat;
+            BTNexcluir.Font = new Font("Verdana", 9F, FontStyle.Bold);
+            BTNexcluir.ForeColor = Color.Brown;
+            BTNexcluir.Image = Properties.Resources.Delete;
+            BTNexcluir.Location = new Point(516, 335);
+            BTNexcluir.Name = "BTNexcluir";
+            BTNexcluir.Size = new Size(83, 57);
+            BTNexcluir.TabIndex = 24;
+            BTNexcluir.Text = "E&xcluir";
+            BTNexcluir.TextImageRelation = TextImageRelation.ImageAboveText;
+            BTNexcluir.UseVisualStyleBackColor = false;
+            // 
+            // BTNeditar
+            // 
+            BTNeditar.BackColor = SystemColors.Control;
+            BTNeditar.FlatAppearance.BorderSize = 0;
+            BTNeditar.FlatAppearance.MouseDownBackColor = Color.Gold;
+            BTNeditar.FlatAppearance.MouseOverBackColor = Color.Khaki;
+            BTNeditar.FlatStyle = FlatStyle.Flat;
+            BTNeditar.Font = new Font("Verdana", 9F, FontStyle.Bold);
+            BTNeditar.ForeColor = Color.Goldenrod;
+            BTNeditar.Image = Properties.Resources.Edit;
+            BTNeditar.Location = new Point(349, 335);
+            BTNeditar.Name = "BTNeditar";
+            BTNeditar.Size = new Size(83, 57);
+            BTNeditar.TabIndex = 23;
+            BTNeditar.Text = "&Editar";
+            BTNeditar.TextImageRelation = TextImageRelation.ImageAboveText;
+            BTNeditar.UseVisualStyleBackColor = false;
+            // 
+            // BTNadicionar
+            // 
+            BTNadicionar.BackColor = SystemColors.Control;
+            BTNadicionar.FlatAppearance.BorderSize = 0;
+            BTNadicionar.FlatAppearance.MouseDownBackColor = Color.LimeGreen;
+            BTNadicionar.FlatAppearance.MouseOverBackColor = Color.PaleGreen;
+            BTNadicionar.FlatStyle = FlatStyle.Flat;
+            BTNadicionar.Font = new Font("Verdana", 9F, FontStyle.Bold);
+            BTNadicionar.ForeColor = Color.ForestGreen;
+            BTNadicionar.Image = Properties.Resources.Add1;
+            BTNadicionar.Location = new Point(15, 335);
+            BTNadicionar.Name = "BTNadicionar";
+            BTNadicionar.Size = new Size(83, 57);
+            BTNadicionar.TabIndex = 22;
+            BTNadicionar.Text = "&Adicionar";
+            BTNadicionar.TextImageRelation = TextImageRelation.ImageAboveText;
+            BTNadicionar.UseVisualStyleBackColor = false;
+            // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1000, 700);
+            Controls.Add(BTNcancelar);
+            Controls.Add(BTNexcluir);
+            Controls.Add(BTNeditar);
+            Controls.Add(BTNadicionar);
             Controls.Add(lblId);
             Controls.Add(lblNome);
             Controls.Add(lblCpf);
@@ -321,10 +360,6 @@
             Controls.Add(DTPnascimento);
             Controls.Add(DTPcadastro);
             Controls.Add(CHKativo);
-            Controls.Add(BTNadicionar);
-            Controls.Add(BTNeditar);
-            Controls.Add(BTNexcluir);
-            Controls.Add(BTNcancelar);
             Controls.Add(BTNpesquisar);
             Controls.Add(DGVclientes);
             Name = "FrmCliente";
@@ -343,5 +378,9 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private Button BTNcancelar;
+        private Button BTNexcluir;
+        private Button BTNeditar;
+        private Button BTNadicionar;
     }
 }
