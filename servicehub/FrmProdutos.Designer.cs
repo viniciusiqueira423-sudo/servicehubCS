@@ -2,15 +2,8 @@
 {
     partial class FrmProdutos
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProdutos));
@@ -78,7 +67,6 @@
             // CMDcategoria
             // 
             CMDcategoria.FormattingEnabled = true;
-            CMDcategoria.Items.AddRange(new object[] { "amortecedores", "arcondicionados", "motores" });
             CMDcategoria.Location = new Point(105, 124);
             CMDcategoria.Name = "CMDcategoria";
             CMDcategoria.Size = new Size(490, 23);
@@ -87,6 +75,7 @@
             // NudValorUnit
             // 
             NudValorUnit.DecimalPlaces = 2;
+            NudValorUnit.Maximum = 999999;
             NudValorUnit.Location = new Point(105, 92);
             NudValorUnit.Name = "NudValorUnit";
             NudValorUnit.Size = new Size(120, 23);
@@ -95,6 +84,7 @@
             // NUDestoquemin
             // 
             NUDestoquemin.DecimalPlaces = 3;
+            NUDestoquemin.Maximum = 999999;
             NUDestoquemin.Location = new Point(141, 161);
             NUDestoquemin.Name = "NUDestoquemin";
             NUDestoquemin.Size = new Size(120, 23);
@@ -111,6 +101,7 @@
             // NUDclassedesc
             // 
             NUDclassedesc.DecimalPlaces = 3;
+            NUDclassedesc.Maximum = 999999;
             NUDclassedesc.Location = new Point(416, 163);
             NUDclassedesc.Name = "NUDclassedesc";
             NUDclassedesc.Size = new Size(120, 23);
@@ -124,6 +115,7 @@
             BTNcarregarimg.TabIndex = 13;
             BTNcarregarimg.Text = "C&arregar Imagem";
             BTNcarregarimg.UseVisualStyleBackColor = true;
+
             // 
             // label1
             // 
@@ -193,14 +185,14 @@
             PICimagem.Location = new Point(622, 12);
             PICimagem.Name = "PICimagem";
             PICimagem.Size = new Size(155, 145);
+            PICimagem.SizeMode = PictureBoxSizeMode.Zoom;
             PICimagem.TabIndex = 23;
             PICimagem.TabStop = false;
             // 
             // CHKdescontinuado
             // 
             CHKdescontinuado.AutoSize = true;
-            CHKdescontinuado.Checked = true;
-            CHKdescontinuado.CheckState = CheckState.Indeterminate;
+            CHKdescontinuado.CheckState = CheckState.Unchecked;
             CHKdescontinuado.Location = new Point(365, 203);
             CHKdescontinuado.Name = "CHKdescontinuado";
             CHKdescontinuado.Size = new Size(106, 19);
@@ -252,6 +244,7 @@
             BTNpesquisar.Text = "&Buscar";
             BTNpesquisar.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNpesquisar.UseVisualStyleBackColor = false;
+            BTNpesquisar.Click += BTNpesquisar_Click;
             // 
             // button2
             // 

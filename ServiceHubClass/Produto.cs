@@ -121,7 +121,7 @@ namespace ServiceHubClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_update";
-            cmd.Parameters.AddWithValue("spids", id);
+            cmd.Parameters.AddWithValue("spid", id);
             cmd.Parameters.AddWithValue("spcod_barras", codBarras);
             cmd.Parameters.AddWithValue("spdescricao", descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", valorUnit);
