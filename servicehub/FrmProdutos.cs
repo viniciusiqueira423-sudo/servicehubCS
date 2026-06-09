@@ -48,6 +48,10 @@ namespace servicehub
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //construindo o botão para editar o produto selecionado na DGV
+            //verificar se há um produto selecionado na DGV
+                
+
 
         }
     }
