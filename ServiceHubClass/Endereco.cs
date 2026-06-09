@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceHubClass
 {
-    internal class Endereco
+    public class Endereco
     {
     }
 }

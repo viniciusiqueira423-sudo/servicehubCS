@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceHubClass
 {
-    internal class Pedido
+    public class Pedido
     {
     }
 }

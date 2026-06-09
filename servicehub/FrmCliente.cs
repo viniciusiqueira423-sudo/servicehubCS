@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace servicehub
 {
-    public partial class FrmClientes : Form
+    public partial class FrmCliente : Form
     {
-        public FrmClientes()
+        public FrmCliente()
         {
             InitializeComponent();
+        }
+
+        private void FrmCliente_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

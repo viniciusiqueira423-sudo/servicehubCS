@@ -109,17 +109,14 @@ namespace ServiceHubClass
             {
                 cmd.CommandType = CommandType.Text;
 
-                if (!string.IsNullOrWhiteSpace(busca))
+                if (!string.IsNullOrEmpty(busca))
                 {
-                    cmd.CommandText =
-                        "SELECT * FROM usuarios WHERE nome LIKE @busca ORDER BY nome";
-
-                    cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
+                    cmd.CommandText = "select * from clientes where nome like @busca order by nome";
+                    cmd.Parameters.AddWithValue("@busca", $"%{busca}%");
                 }
                 else
                 {
-                    cmd.CommandText =
-                        "SELECT * FROM usuarios ORDER BY nome";
+                    cmd.CommandText = "select * from clientes order by nome";
                 }
 
                 var dr = cmd.ExecuteReader();
