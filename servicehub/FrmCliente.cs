@@ -66,8 +66,7 @@ namespace servicehub
 
             TXTnome.Focus();
         }
-
-        private void BTNadicionar_Click(object sender, EventArgs e)
+        private void BTNadicionar_Click_1(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente(
                 TXTnome.Text,
@@ -92,12 +91,13 @@ namespace servicehub
             }
         }
 
-        private void BTNpesquisar_Click(object sender, EventArgs e)
+        private void BTNcancelar_Click_1(object sender, EventArgs e)
         {
-            CarregarClientes(TXTbuscar.Text);
+            LimparCampos();
+            CarregarClientes();
         }
 
-        private void BTNeditar_Click(object sender, EventArgs e)
+        private void BTNeditar_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(TXTid.Text))
             {
@@ -129,7 +129,7 @@ namespace servicehub
             }
         }
 
-        private void BTNexcluir_Click(object sender, EventArgs e)
+        private void BTNexcluir_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(TXTid.Text))
             {
@@ -160,13 +160,17 @@ namespace servicehub
             }
         }
 
-        private void BTNcancelar_Click(object sender, EventArgs e)
+        private void TXTbuscar_TextChanged_1(object sender, EventArgs e)
         {
-            LimparCampos();
-            CarregarClientes();
+            CarregarClientes(TXTbuscar.Text);
         }
 
-        private void DGVclientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DGVclientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DGVclientes_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
                 return;
@@ -200,9 +204,14 @@ namespace servicehub
             clienteSelecionadoId = Convert.ToInt32(TXTid.Text);
         }
 
-        private void TXTbuscar_TextChanged(object sender, EventArgs e)
+        private void BTNpesquisar_Click(object sender, EventArgs e)
         {
             CarregarClientes(TXTbuscar.Text);
+        }
+
+        private void DTPnascimento_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

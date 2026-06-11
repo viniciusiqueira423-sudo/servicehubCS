@@ -67,6 +67,7 @@
             BTNexcluir = new Button();
             BTNeditar = new Button();
             BTNadicionar = new Button();
+            dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)DGVclientes).BeginInit();
             SuspendLayout();
             // 
@@ -169,6 +170,7 @@
             TXTbuscar.PlaceholderText = "Buscar Cliente";
             TXTbuscar.Size = new Size(700, 23);
             TXTbuscar.TabIndex = 12;
+            TXTbuscar.TextChanged += TXTbuscar_TextChanged_1;
             // 
             // DTPnascimento
             // 
@@ -177,6 +179,7 @@
             DTPnascimento.Name = "DTPnascimento";
             DTPnascimento.Size = new Size(200, 23);
             DTPnascimento.TabIndex = 13;
+            DTPnascimento.ValueChanged += DTPnascimento_ValueChanged;
             // 
             // DTPcadastro
             // 
@@ -201,6 +204,7 @@
             BTNpesquisar.Size = new Size(100, 25);
             BTNpesquisar.TabIndex = 20;
             BTNpesquisar.Text = "Pesquisar";
+            BTNpesquisar.Click += BTNpesquisar_Click;
             // 
             // DGVclientes
             // 
@@ -214,6 +218,8 @@
             DGVclientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGVclientes.Size = new Size(950, 250);
             DGVclientes.TabIndex = 21;
+            DGVclientes.CellClick += DGVclientes_CellClick_1;
+            DGVclientes.CellContentClick += DGVclientes_CellContentClick;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -280,6 +286,7 @@
             BTNcancelar.Text = "&Cancelar";
             BTNcancelar.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNcancelar.UseVisualStyleBackColor = false;
+            BTNcancelar.Click += BTNcancelar_Click_1;
             // 
             // BTNexcluir
             // 
@@ -298,6 +305,7 @@
             BTNexcluir.Text = "E&xcluir";
             BTNexcluir.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNexcluir.UseVisualStyleBackColor = false;
+            BTNexcluir.Click += BTNexcluir_Click_1;
             // 
             // BTNeditar
             // 
@@ -316,6 +324,7 @@
             BTNeditar.Text = "&Editar";
             BTNeditar.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNeditar.UseVisualStyleBackColor = false;
+            BTNeditar.Click += BTNeditar_Click_1;
             // 
             // BTNadicionar
             // 
@@ -334,12 +343,21 @@
             BTNadicionar.Text = "&Adicionar";
             BTNadicionar.TextImageRelation = TextImageRelation.ImageAboveText;
             BTNadicionar.UseVisualStyleBackColor = false;
+            BTNadicionar.Click += BTNadicionar_Click_1;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(527, 136);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 26;
             // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1000, 700);
+            Controls.Add(dateTimePicker1);
             Controls.Add(BTNcancelar);
             Controls.Add(BTNexcluir);
             Controls.Add(BTNeditar);
@@ -382,5 +400,6 @@
         private Button BTNexcluir;
         private Button BTNeditar;
         private Button BTNadicionar;
+        private DateTimePicker dateTimePicker1;
     }
 }
